@@ -1,0 +1,11 @@
+# Prometheus v3.15.1
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: api
+    static_configs: [{targets: ["api:8000"]}]
+  - job_name: otel-collector
+    static_configs: [{targets: ["otel-collector:8888"]}]
+  # Lab 2: add the vLLM /metrics target on the rented GPU here
+  # (vllm:prefix_cache_hits, vllm:prefix_cache_queries, KV usage, preemptions).

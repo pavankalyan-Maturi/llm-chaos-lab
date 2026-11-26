@@ -1,0 +1,47 @@
+[project]
+name = "llm-chaos-lab"
+version = "0.1.0"
+description = "Fault-flag monolith for debugging production LLM systems"
+requires-python = ">=3.13,<3.14"
+# Exact pins. Bump deliberately and record the change in the postmortem that motivated it.
+dependencies = [
+  "fastapi==0.165.0",
+  "uvicorn[standard]==0.54.0",
+  "pydantic==2.14.4",
+  "pydantic-settings==2.16.3",
+  "httpx==0.28.1",
+  "psycopg[binary]==3.3.9",
+  "pgvector==0.5.1",
+  "qdrant-client==1.20.0",
+  "prometheus-client==0.26.0",
+  "opentelemetry-sdk==1.45.2",
+  "opentelemetry-exporter-otlp-proto-http==1.45.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.2.0",
+  "pytest-asyncio==1.5.0",
+  "ruff==0.17.6",
+]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["api*", "gateway*", "chaos*", "ingest*", "agent*", "mcp_servers*", "guards*", "evals*"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Header"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

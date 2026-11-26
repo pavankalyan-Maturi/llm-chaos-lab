@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.gameday/**)",
+      "Edit(./.gameday/**)",
+      "Write(./.gameday/**)"
+    ]
+  }
+}

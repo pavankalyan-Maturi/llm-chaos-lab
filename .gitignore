@@ -1,0 +1,31 @@
+# Blind game-day answer key and active flags. Never commit.
+.gameday/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Data and artifacts
+data/
+*.parquet
+*.npy
+runs/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+.claude/settings.local.json
